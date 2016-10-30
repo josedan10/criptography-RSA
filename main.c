@@ -3,13 +3,27 @@
 #include <math.h>
 #include <string.h>
 
-int (*cmd)(int, int);//Función para calcular el mcd
-double (*rand_num)(int *);//Función para generar un número aleatorio
-int (*rand_prime)(double (*)(int *), double (*)(double));//Generamos un número primo usando la función de generar números
-													   //Aleatoriamente y el teorema de Eratostenes para verificar si es primo
-int (*prime)(int *)//Recibe un número y verifica si este es primo
+/*--- DEFINICIÓN DE FUNCIONES ---*/
 
+//Función para calcular el mcd
+int (*cmd)(double, double);
 
+//Función para generar un número aleatorio
+double (*rand_num)(double *);
+
+/*Generamos un número primo usando la función de generar números aleatoriamente y el teorema de Eratostenes 
+para verificar si es primo*/
+double (*rand_prime)(double, double (*)(double *), double (*)(*double));
+
+//Recibe un número y verifica si este es primo													   
+double (*prime)(double *)
+
+//Función para generar las claves públicas y privadas
+void func_claves_publica_privada(double *, double *, double *, double *,	
+	double (*)(double, double ),	
+	double (*)(double *),
+	double (*)(double *),	
+	double (*)(double *, double (*)(double *), double (*)(double *)))
 
 int main(){
 	int opc;//Opción del usuario
@@ -23,7 +37,7 @@ int main(){
 
 	switch (opc){
 		case 1:
-			/*func_claves_publica_privada(*p, *q, *d, *e,);*/
+			/*func_claves_publica_privada(*p, *q, *d, *e, *n);*/
 		case 2:
 			//func_texto2numero();
 		case 3:
