@@ -8,18 +8,18 @@ void func_claves_publica_privada(double *p,double *q,double *d,double *e,double 
 		int i;
 		
 		//Generamos los números primos para la llave privada
-		*p=(*rand_prime)(p, rand_num(p), prime(p));
-		*q=(*rand_prime)(q, rand_num(q), prime(q));
+		*p=(*rand_prime)(p, rand_num, prime);
+		*q=(*rand_prime)(q, rand_num, prime);
 		
 		//Calculamos n
 		*n=(*p)*(*q);
 
 		//Calculamos k
-		k=(*p-1)*(*q-1);
+		k=((*p)-1)*((*q)-1);
 
 		//Calculamos e=i tal que i<k cumpla con que (i,k)=1
 		for (i=1; i<k; i++){
-			if(k%i==1){
+			if((int)(k%i)==1){
 				*e=i;
 				break;
 			}

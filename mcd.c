@@ -1,5 +1,5 @@
-int (*mcd)(int x, int y){
-	int temp, i;
+int (*mcd)(double x, double y){
+	double temp, i;
 
 	if (x<y){
 		temp=x;
@@ -8,7 +8,7 @@ int (*mcd)(int x, int y){
 	}
 
 	if (x%y==0){
-		return y;
+		return (int)y;
 	}else{
 		i=0;
 
@@ -19,7 +19,7 @@ int (*mcd)(int x, int y){
 				return 1;
 				break;
 			}else if(y==0){
-				return x;
+				return (int)x;
 				break;
 			}else{
 				x=y;
