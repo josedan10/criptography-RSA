@@ -26,6 +26,8 @@ void func_claves_publica_privada(double *, double *, double *, double *, double 
 	double (*)(double *),	
 	double (*)(double *, double (*)(double *), double (*)(double *)));
 
+double func_r_elev_s_mod_n(double ,double, double);
+
 
 int main(){
 	int opc;//Opción del usuario

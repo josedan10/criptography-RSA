@@ -1,4 +1,4 @@
-void fun_esquema(){
+(char*) fun_esquema(){
 
 	//Reservamos espacio para almacenar los 99 caracteres.
 	char *esquema;
@@ -51,5 +51,6 @@ void fun_esquema(){
 		esquema[++j]="'";esquema[++j]="#";esquema[++j]="[";
 		esquema[++j]="]";esquema[++j]="~";
 	}
+	return esquema;
 
 }
