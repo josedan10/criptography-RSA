@@ -1,0 +1,6 @@
+Notas:
+
+1.- Falla en la generación de números aleatorios.
+2.- Apuntadores a archivos como parámetros de funciones.
+3.- Tamaño del número primo aleatorio.
+4.- Cálculo de d.

@@ -37,7 +37,7 @@ int main(){
 
 	switch (opc){
 		case 1:
-			/*func_claves_publica_privada(*p, *q, *d, *e, *n);*/
+			/*func_claves_publica_privada(*p, *q, *d, *e, *n, *mcd, *prime, *rand_num, *rand_prime);*/
 		case 2:
 			//func_texto2numero();
 		case 3:
