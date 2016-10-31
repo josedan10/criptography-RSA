@@ -17,7 +17,13 @@ void fun_esquema(){
 		}
 
 		//Agregamos las letras mayúsculas
-		for (i=65,i<=90;i++,j++){
+		for (i=65; i<=90; i++, j++){
+			esquema[j]=(char)i;
+		}
+
+		//Agregamos los números del 0 al 9
+
+		for (i=48; i<=57; i++, j++){
 			esquema[j]=(char)i;
 		}
 
