@@ -1,5 +1,5 @@
 void func_claves_publica_privada(double *p,double *q,double *d,double *e,double *n,	
-	double (*cmd)(double, double ),	
+	double (*mcd)(double, double),	
 	double (*prime)(double *),
 	double (*rand_num)(double *),	
 	double (*rand_prime)(double *, double (*rand_num)(double *), double (*prime)(double *)))
@@ -17,9 +17,11 @@ void func_claves_publica_privada(double *p,double *q,double *d,double *e,double 
 		//Calculamos k
 		k=((*p)-1)*((*q)-1);
 
-		//Calculamos e=i tal que i<k cumpla con que (i,k)=1
+		//Calculamos e=i tal que i<k cumpla con que k=1(mod i)
 		for (i=1; i<k; i++){
-			if((int)(k%i)==1){
+            int mod=(int)k%i;
+            
+			if(mod==1){
 				*e=i;
 				break;
 			}

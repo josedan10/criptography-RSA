@@ -6,24 +6,25 @@
 /*--- DEFINICIÓN DE FUNCIONES ---*/
 
 //Función para calcular el mcd
-int (*mcd)(double, double);
+int mcd(double, double);
 
 //Función para generar un número aleatorio
-double (*rand_num)(double *);
+double rand_num(double *);
 
 /*Generamos un número primo usando la función de generar números aleatoriamente y el teorema de Eratostenes 
 para verificar si es primo*/
-double (*rand_prime)(double, double (*)(double *), double (*)(double *));
+double rand_prime(double *, double (*)(double *), double (*)(double *));
 
 //Recibe un número y verifica si este es primo													   
-double (*prime)(double *);
+double prime(double *);
 
 //Función para generar las claves públicas y privadas
-void (*func_claves_publica_privada)(double *, double *, double *, double *, double *,	
+void func_claves_publica_privada(double *, double *, double *, double *, double *,	
 	double (*)(double, double ),	
 	double (*)(double *),
 	double (*)(double *),	
 	double (*)(double *, double (*)(double *), double (*)(double *)));
+
 
 int main(){
 	int opc;//Opción del usuario
