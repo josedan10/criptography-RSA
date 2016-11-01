@@ -27,16 +27,16 @@ void func_claves_publica_privada(double *, double *, double *, double *, double 
 	double (*)(double *, double (*)(double *), double (*)(double *)));
 
 //Función generadora del esquema
-(char*) func_esquema(char *);
+char *func_esquema(char *);
 
 //Función r^s(mod n)
 double func_r_elev_s_mod_n(double ,double, double);
 
 //Convierte el vector de numeros en texto
-(char*) func_numero2texto(double** /*Apuntador del vector de números*/, (char*)(*)(char*));
+char *func_numero2texto(char */*Apuntador del vector de números*/, char *(*)(char *));
 
 //Convierte el texto en un vector de numeros
-(double**) func_texto2numero(char */*Apuntador a la cadena*/, (char *)(*)(char *));
+char *func_texto2numero(char */*Apuntador a la cadena*/, char *(*)(char *));
 
 
 int main(){
