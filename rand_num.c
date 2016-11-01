@@ -1,9 +1,8 @@
-double rand_num(double *dir_num){
-	//int hora=time(NULL);
+int rand_num(int par){
+	int num;
 
-	//srand(hora);
+	/*par es para asegurar que el número sea mayor a par siempre*/
 
-	//*dir_num=rand()%2000 + 100;//Generamos un número entre 100 y 2000
-
-	return *dir_num;
+	srand((unsigned int)time(time_t *)NULL);
+	return num=rand()%(100-par-1)+par;
 }

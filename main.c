@@ -1,61 +1,80 @@
-#include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+#include <stdio.h>
 #include <string.h>
-#include <time.h>
+#include <math.h>
+//#include <time.h>
 
 /*--- DEFINICIÓN DE FUNCIONES ---*/
 
-//Función para calcular el mcd
-int mcd(double, double);
+//Para calcular el mcd
+int mcd(int, int);
 
-//Función para generar un número aleatorio
-double rand_num(double *);
+//Para generar un número aleatorio
+int rand_num(int);
 
-/*Generamos un número primo usando la función de generar números aleatoriamente y el teorema de Eratostenes 
-para verificar si es primo*/
-double rand_prime(double *, double (*)(double *), double (*)(double *));
+//Para generar un número primo 
+int prime(int);
 
-//Recibe un número y verifica si este es primo													   
-double prime(double *);
+//Para generar un número primo aleatorio
+int rand_prime(int (*)(void), int (*)(void));
 
 //Función para generar las claves públicas y privadas
-void func_claves_publica_privada(double *, double *, double *, double *, double *,	
-	double (*)(double, double ),	
-	double (*)(double *),
-	double (*)(double *),	
-	double (*)(double *, double (*)(double *), double (*)(double *)));
+int func_claves_publica_privada(int *, int *, int *, int *, int *,
+	int (*)(int, int),/*MCD*/
+	int (*)(void),/*rand_num*/
+	int (*)(void), /*prime*/
+	int (*)(int (*)(void), int (*) (void))/*rand_prime*/);
 
-//Función generadora del esquema
-char *func_esquema(char *);
+//Función generadora del vector esquema
+void func_esquema(char *);
 
-//Función r^s(mod n)
-double func_r_elev_s_mod_n(double ,double, double);
+//Función r^s (mod n)
+int func_r_elev_s_mod_n(int, int, int);
 
-//Convierte el vector de numeros en texto
-char *func_numero2texto(char */*Apuntador del vector de números*/, char *(*)(char *));
+//Convierte el vector de números en texto
+int func_numero2texto(char *, void (*)(char *));
 
-//Convierte el texto en un vector de numeros
-char *func_texto2numero(char */*Apuntador a la cadena*/, char *(*)(char *));
+//Convierte el vector de caracteres en números
+int func_texto2numero(char *, void (*)(char *));
 
 
 int main(){
-	int opc;//Opción del usuario
-	double p, q, d, e, n;
-	char *esquema;//Esquema de referencia
+	char *esquema;//Vector esquema
+	int opc;
+	
+	//Reservamos espacio para almacenar los 99 caracteres.
+	esquema= (char*)malloc(99*sizeof(char));
 
-	printf("1) Generar claves publica y privada\n2) Codificar el mensaje\n");
-    printf("3) Decodificar el mensaje\n4) Salir");
-	scanf("%d",&opc);
-
-	switch (opc){
-		case 1:
-			/*func_claves_publica_privada(*p, *q, *d, *e, *n, *mcd, *prime, *rand_num, *rand_prime);*/
-		case 2:
-			//func_texto2numero();
-		case 3:
-			//func_numero2texto();
-		default:
-			return 0;
+	if (esquema==NULL){
+		puts("Error al reservar memoria para el esquema");
+		exit(1);
+	}else{
+		gen_esquema(esquema);
 	}
+
+	do {
+		/*--- MENÚ ---*/
+		printf("1) Generar claves públicas y privadas\n");
+		printf("2) Codificar mensaje\n");
+		printf("3) Decodificar mensaje\n");
+		printf("4) Salir\n");
+
+		scanf("%d",&opc);
+
+		switch (opc){
+			case 1:
+				//Generar las claves
+
+			case 2:
+				//Codificar mensaje
+
+			case 3:
+				//Decodificar mensaje
+
+			default:
+				return 0;
+		}	
+	}(while opc!=0);
+	return 0;
+	
 }

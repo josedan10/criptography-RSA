@@ -1,15 +1,9 @@
-double prime(double *num){
-	int i, ver=0;
+int prime(int num){
+	int i;
+	//num>1 siempre, DEBO ASEGURAR ESTO
 
-	for (i=0;i<=floor(sqrt(*num)); i++){
-		if ((int)(*num)%i==0){
-			ver=1;
-			break;
-		}
+	for (i==2;i<=floor(sqrt(num));i++){
+		if (num%i==0)return 0;
 	}
-	if (ver==0){
-		return 0;
-	}else{
-		return *num;
-	}
+	return 1;
 }
