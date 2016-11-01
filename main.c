@@ -26,12 +26,23 @@ void func_claves_publica_privada(double *, double *, double *, double *, double 
 	double (*)(double *),	
 	double (*)(double *, double (*)(double *), double (*)(double *)));
 
+//Función generadora del esquema
+(char*) func_esquema(char *);
+
+//Función r^s(mod n)
 double func_r_elev_s_mod_n(double ,double, double);
+
+//Convierte el vector de numeros en texto
+(char*) func_numero2texto(double** /*Apuntador del vector de números*/, (char*)(*)(char*));
+
+//Convierte el texto en un vector de numeros
+(double**) func_texto2numero(char */*Apuntador a la cadena*/, (char *)(*)(char *));
 
 
 int main(){
 	int opc;//Opción del usuario
 	double p, q, d, e, n;
+	char *esquema;//Esquema de referencia
 
 	printf("1) Generar claves publica y privada\n2) Codificar el mensaje\n");
     printf("3) Decodificar el mensaje\n4) Salir");

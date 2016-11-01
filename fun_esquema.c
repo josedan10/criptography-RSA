@@ -1,7 +1,6 @@
-(char*) fun_esquema(){
+(char*) fun_esquema(char *esquema){
 
 	//Reservamos espacio para almacenar los 99 caracteres.
-	char *esquema;
 	int i, j;
 
 	esquema= (char*)malloc(99*sizeof(char));
