@@ -1,13 +1,13 @@
-void func_claves_publica_privada(double *p,double *q,double *d,double *e,double *n,	
-	double (*mcd)(double, double),	
-	double (*prime)(double *),
-	double (*rand_num)(double *),	
-	double (*rand_prime)(double *, double (*rand_num)(double *), double (*prime)(double *)))
+int func_claves_publica_privada(int *p,int *q,int *d,int *e,int *n,	
+	int (*mcd)(int, int),	
+	int (*prime)(int *),
+	int (*rand_num)(int *),	
+	int (*rand_prime)(int *, int (*rand_num)(int *), int (*prime)(int *)))
 {
 	/*Input de los números para armar la clave*/
 
 
-	double k;//Declaramos k de la relación k=(p-1)(q-1) que debe ser coprimo con e
+	int k;//Declaramos k de la relación k=(p-1)(q-1) que debe ser coprimo con e
 	int i;
 	
 	//Generamos los números primos para la llave privada
@@ -31,8 +31,7 @@ void func_claves_publica_privada(double *p,double *q,double *d,double *e,double 
 	}
      //Aquí calculamos d
 
-	/*Utilizar la Criba de Eratóstenes para calcular un número coprimo con e que sea 
-	menor que k*/
+	d=(k+1)/e;
 
 
 
