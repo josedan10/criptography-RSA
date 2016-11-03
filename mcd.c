@@ -1,12 +1,16 @@
-double mcd(double y, double x){
-	double temp, i;
+int mcd(int y, int x){
+
+	//Esta función retorna el mcd de dos números
+
+	int temp, i;
 
 	if (x<y){
 		temp=x;
 		y=x;
 		x=temp;
 	}
-	int mod=(int)x%(int)y;
+	//Si y divide a x, entonces mcd(x,y)=y
+	int mod=x%y;
 
 	if (mod==0){
 		return y;
@@ -17,6 +21,7 @@ double mcd(double y, double x){
 			y=x-y*(int)(x/y);
 
 			if (x==y && i==0){
+				//Si esto ocurre significa que son coprimos, mcd(x,y)=1
 				return 1;
 				break;
 			}else if(y==0){

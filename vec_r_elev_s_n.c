@@ -1,6 +1,9 @@
 int vec_r_elev_s_n(int *numeros, int *m, int *n){
 
 	int func_r_elev_s_mod_n(int r, int s, int n){
+
+		//Esta función toma un número aplica la operación (r^s)(mod n) recursivamente para evitar que se llegue al oveflow
+
 		int resultado=1;
 		int j;
 
@@ -14,7 +17,7 @@ int vec_r_elev_s_n(int *numeros, int *m, int *n){
 	}
 
 	int i;
-
+	//Aplicamos la opreación (r^s)(mod n) a cada número del vector
 	for (i=0;i<strlen(numeros);i++)
 		numeros[i]=func_r_elev_s_mod_n(numeros[i], m, n);
 
