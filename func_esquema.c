@@ -35,7 +35,7 @@ void func_esquema(char *esquema){
 	esquema[++j]=':';esquema[++j]=';';esquema[++j]='.';
 	esquema[++j]=',';esquema[++j]='_';esquema[++j]='-';
 	esquema[++j]='{';esquema[++j]='}';esquema[++j]='(';
-	esquema[++j]=')';esquema[++j]=(char)37;//Este es el valor de '%', de la otra manera de error de sintaxis
+	esquema[++j]=')';esquema[++j]='%';//Este es el valor de '%', de la otra manera de error de sintaxis
 	esquema[++j]='&';esquema[++j]='@';esquema[++j]='*';
 	esquema[++j]='+';esquema[++j]='/';esquema[++j]='\\';//Revisar '\'
 	esquema[++j]='|';esquema[++j]='$';esquema[++j]='"';
