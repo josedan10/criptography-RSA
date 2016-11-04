@@ -2,17 +2,17 @@ void func_esquema(char *esquema){
 		
 	int i, j;
 
-	//Agregamos las letras minÃºsculas
+	//Agregamos las letras minúsculas
 	for (i=97, j=0; i<=122; i++, j++){
 		esquema[j]=(char)i;
 	}
 
-	//Agregamos las letras mayÃºsculas
+	//Agregamos las letras mayúsculas
 	for (i=65; i<=90; i++, j++){
 		esquema[j]=(char)i;
 	}
 
-	//Agregamos los nÃºmeros del 0 al 9
+	//Agregamos los números del 0 al 9
 
 	for (i=48; i<=57; i++, j++){
 		esquema[j]=(char)i;
@@ -20,42 +20,25 @@ void func_esquema(char *esquema){
 
 	//Agregamos el espacio, !, ¡, ?, ¿
 
-<<<<<<< HEAD
-	esquema[++j]=' ';esquema[++j]='!';esquema[++j]='¡';
-	esquema[++j]='?';esquema[++j]='¿';
-=======
-	esquema[++j]=' ';esquema[++j]='!';esquema[++j]='Â¡';
-	esquema[++j]='?';esquema[++j]='Â¿';
->>>>>>> origin/master
+	esquema[j++]=' ';esquema[j++]='!';esquema[j++]=(char)173;
+	esquema[j++]='?';esquema[j++]=(char)168;
 
-	//Agregamos á, í, ó, é
+	//Agregamos á, í, ó, ú
 	for (i=160;i<=163;i++,j++){
 		esquema[j]=(char)i;
 	}
 
-<<<<<<< HEAD
-	/*Agregamos 'ñ', 'Ñ', ':', ';', '.', ',', '_', '-', '{', '}',
+	/*Agregamos é, ñ, Ñ, ':', ';', '.', ',', '_', '-', '{', '}',
 	'(',')', '%', '&', '@', '*', '+', '/', '\','|', '$', ''', ''', '#',
 	'[', ']', '~'*/
-	esquema[++j]='ñ';esquema[++j]='Ñ';esquema[++j]=':';esquema[++j]=';';esquema[++j]='.';
-=======
-	/*Agregamos Ã©, Ã±, Ã‘, ':', ';', '.', ',', '_', '-', '{', '}',
-	'(',')', '%', '&', '@', '*', '+', '/', '\','|', '$', ''', ''', '#',
-	'[', ']', '~'*/
-	esquema[++j]='Ã©';esquema[++j]='Ã±';esquema[++j]='Ã‘';
-	esquema[++j]=':';esquema[++j]=';';esquema[++j]='.';
->>>>>>> origin/master
-	esquema[++j]=',';esquema[++j]='_';esquema[++j]='-';
-	esquema[++j]='{';esquema[++j]='}';esquema[++j]='(';
-	esquema[++j]=')';esquema[++j]='%';//Este es el valor de '%', de la otra manera de error de sintaxis
-	esquema[++j]='&';esquema[++j]='@';esquema[++j]='*';
-	esquema[++j]='+';esquema[++j]='/';esquema[++j]='\\';//Revisar '\'
-	esquema[++j]='|';esquema[++j]='$';esquema[++j]='"';
-<<<<<<< HEAD
-	esquema[++j]='\'';esquema[++j]='#';esquema[++j]='[';esquema[++j]=']';esquema[j]='~';
+	esquema[j++]=(char)130;esquema[j++]=(char)164;esquema[j++]=(char)165;
+	esquema[j++]=':';esquema[j++]=';';esquema[j++]='.';
+	esquema[j++]=',';esquema[j++]='_';esquema[j++]='-';
+	esquema[j++]='{';esquema[j++]='}';esquema[j++]='(';
+	esquema[j++]=')';esquema[j++]=(char)37;//Este es el valor de '%', de la otra manera de error de sintaxis
+	esquema[j++]='&';esquema[j++]='@';esquema[j++]='*';
+	esquema[j++]='+';esquema[j++]='/';esquema[j++]='\\';//Revisar '\'
+	esquema[j++]='|';esquema[j++]='$';esquema[j++]='"';
+	esquema[j++]='\'';esquema[j++]='#';esquema[j++]='[';
+	esquema[j++]=']';esquema[j]='~';
 }
-=======
-	esquema[++j]='\'';esquema[++j]='#';esquema[++j]='[';
-	esquema[++j]=']';esquema[++j]='~';
-}
->>>>>>> origin/master
