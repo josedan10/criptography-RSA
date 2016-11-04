@@ -18,27 +18,25 @@ void func_esquema(char *esquema){
 		esquema[j]=(char)i;
 	}
 
-	//Agregamos el espacio, !, Â¡, ?, Â¿
+	//Agregamos el espacio, !, ¡, ?, ¿
 
-	esquema[++j]=" ";esquema[++j]="!";esquema[++j]="Â¡";
-	esquema[++j]="?";esquema[++j]="Â¿";
+	esquema[++j]=' ';esquema[++j]='!';esquema[++j]='¡';
+	esquema[++j]='?';esquema[++j]='¿';
 
-	//Agregamos Ã¡, Ã­, Ã³, Ãº
+	//Agregamos á, í, ó, é
 	for (i=160;i<=163;i++,j++){
 		esquema[j]=(char)i;
 	}
 
-	/*Agregamos Ã©, Ã±, Ã‘, ":", ";", ".", ",", "_", "-", "{", "}",
-	"(",")", "%", "&", "@", "*", "+", "/", "\","|", "$", '"', "'", "#",
-	"[", "]", "~"*/
-	esquema[++j]="Ã©";esquema[++j]="Ã±";esquema[++j]="Ã‘";
-	esquema[++j]=":";esquema[++j]=";";esquema[++j]=".";
-	esquema[++j]=",";esquema[++j]="_";esquema[++j]="-";
-	esquema[++j]="{";esquema[++j]="}";esquema[++j]="(";
-	esquema[++j]=")";esquema[++j]=(char)37;//Este es el valor de "%", de la otra manera de error de sintaxis
-	esquema[++j]="&";esquema[++j]="@";esquema[++j]="*";
-	esquema[++j]="+";esquema[++j]="/";esquema[++j]="\\";//Revisar "\"
-	esquema[++j]="|";esquema[++j]="$";esquema[++j]='"';
-	esquema[++j]="'";esquema[++j]="#";esquema[++j]="[";
-	esquema[++j]="]";esquema[++j]="~";
+	/*Agregamos 'ñ', 'Ñ', ':', ';', '.', ',', '_', '-', '{', '}',
+	'(',')', '%', '&', '@', '*', '+', '/', '\','|', '$', ''', ''', '#',
+	'[', ']', '~'*/
+	esquema[++j]='ñ';esquema[++j]='Ñ';esquema[++j]=':';esquema[++j]=';';esquema[++j]='.';
+	esquema[++j]=',';esquema[++j]='_';esquema[++j]='-';
+	esquema[++j]='{';esquema[++j]='}';esquema[++j]='(';
+	esquema[++j]=')';esquema[++j]='%';//Este es el valor de '%', de la otra manera de error de sintaxis
+	esquema[++j]='&';esquema[++j]='@';esquema[++j]='*';
+	esquema[++j]='+';esquema[++j]='/';esquema[++j]='\\';//Revisar '\'
+	esquema[++j]='|';esquema[++j]='$';esquema[++j]='"';
+	esquema[++j]='\'';esquema[++j]='#';esquema[++j]='[';esquema[++j]=']';esquema[j]='~';
 }

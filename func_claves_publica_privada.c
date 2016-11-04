@@ -12,7 +12,10 @@ int func_claves_publica_privada(int *p,int *q,int *d,int *e,int *n,
 	
 	//Generamos los números primos para la llave privada
 	*p=(*rand_prime)(p, rand_num, prime);
+	printf("%d",*p);
+	system("PAUSE");
 	*q=(*rand_prime)(q, rand_num, prime);
+	system("PAUSE");
 	
 	//Calculamos n
 	*n=(*p)*(*q);

@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
-//#include <time.h>
+#include <time.h>
 
 /*--- DEFINICIÓN DE FUNCIONES ---*/
 
@@ -82,9 +82,13 @@ int main(){
 		switch (opc){
 			case 1:
 				//Generar las claves
-				func_claves_publica_privada(p,q,d,e,n,mcd,prime,rand_num,rand_prime);
-				printf("Numeros de la clave privada: p=%d, q=%d y d=%d\n", p,q,d);
-				printf("Los numeros de la clave publica son: e=%d y n=%d", e,n);
+				//func_claves_publica_privada(p,q,d,e,n,mcd,prime,rand_num,rand_prime);
+				//printf("Numeros de la clave privada: p=%d, q=%d y d=%d\n", p,q,d);
+				//printf("Los numeros de la clave publica son: e=%d y n=%d", e,n);
+				printf("%s\n",esquema);
+				system("PAUSE");
+				printf(rand_num(verdadero));
+				system("PAUSE");
 
 			case 2:
 				//Codificar mensaje
@@ -98,6 +102,8 @@ int main(){
 					printf("Error al abrir el archivo\n");
 					return 1;
 				}
+				printf("Introduzca las llaves de codificacion 'e' y 'n'");
+				printf("\ne: ");scanf("%d",e);printf("\nn: ");scanf("%d",n);
 
 				
 				parrafos=0;
@@ -158,7 +164,7 @@ int main(){
 
 				/*Esta función devuelve por PANTALLA el contenido del archivo descodificado*/
 
-				printf("Introduzca el nombre del archivo que desea descodificar: ");
+				printf("\nIntroduzca el nombre del archivo que desea descodificar: ");
 				scanf("%s",nombre);
 
 				archivo=fopen(nombre,"r");
