@@ -22,10 +22,13 @@ int func_claves_publica_privada(int *p,int *q,int *d,int *e,int *n,
 
 	//Calculamos e=i tal que i<k cumpla con que k=1(mod i)
 	for (i=1; i<k; i++){
-        *e=(mcd(i,k)!=1)?continue:i,break;
+        if (mcd(i,k)==1){
+           *e=i;
+           break;
+        }
 	}
      //Aquí calculamos d
 
-	*d=(k+1)/e;
+	*d=(k+1)/(*e);
 
 }

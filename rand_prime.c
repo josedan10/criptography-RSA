@@ -1,4 +1,4 @@
-int rand_prime(int (*rand_num)(int *), int (*prime)(int *)){
+int rand_prime(int (*rand_num)(int), int (*prime)(int)){
 	int num;
 
 	do{

@@ -16,10 +16,10 @@ int vec_r_elev_s_n(int *numeros, int *m, int *n){
 		return resultado;
 	}
 
-	int i;
+	int i, largo= sizeof(numeros)/sizeof(int);
 	//Aplicamos la opreación (r^s)(mod n) a cada número del vector
-	for (i=0;i<strlen(numeros);i++)
-		numeros[i]=func_r_elev_s_mod_n(numeros[i], m, n);
+	for (i=0;i<largo;i++)
+		numeros[i]=func_r_elev_s_mod_n(numeros[i], *m, *n);
 
 	return 0;
 }

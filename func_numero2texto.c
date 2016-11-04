@@ -1,6 +1,8 @@
 int func_numero2texto(int **numeros, char *esquema, char **texto, int *s, int *n, int parrafos,
-	int (*vec_r_elev_s_n)(int *, int *, int *, int *)){
-	int m;
+	int (*vec_r_elev_s_n)(int *, int *, int *)){
+	int m, i, j, x, y;
+	int *vector, valor;
+	char letra1, letra2;
 
 	//Esta función descodifica el mensaje del archivo
 
@@ -11,10 +13,10 @@ int func_numero2texto(int **numeros, char *esquema, char **texto, int *s, int *n
 
 	for (i=0; i<=parrafos; i++){
 		//Descodificamos cada línea
-		linea=numeros[i];
+		vector=numeros[i];
 
-		for (j=0; j<strlen(numeros[i]);j++){
-			valor=linea[j];
+		for (j=0; j<sizeof(numeros)/sizeof(int);j++){
+			valor=vector[j];
 			if(valor<1000){
 				//Si el valor es, por ejemplo, 789, toma primero el 7 y luego el 89
 				x=(int)(valor/10);
@@ -30,8 +32,8 @@ int func_numero2texto(int **numeros, char *esquema, char **texto, int *s, int *n
 			}
 
 			//Concatenamos los caracteres y luego los unimos al resto del párrafo
-			concat=strcat(letra1,letra2);
-			texto[i]=strcat(texto[i],concat);
+			strcat(&letra1,&letra2);
+			texto[i]=strcat(texto[i],&letra1);
 			}
 		}
 	}
