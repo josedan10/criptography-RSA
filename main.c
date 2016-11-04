@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
-#include <time.h>
+//#include <time.h>
 
 /*--- DEFINICIÓN DE FUNCIONES ---*/
 
@@ -12,17 +12,16 @@ int mcd(int, int);
 //Para generar un número aleatorio
 int rand_num(int);
 
-//Para generar un número primo 
+//Para generar un número primo
 int prime(int);
 
 //Para generar un número primo aleatorio
 int rand_prime(int (*)(int), int (*)(int));
 
 //Función para generar las claves públicas y privadas
-int func_claves_publica_privada(int *, int *, int *, int *, int *,
-	int (*)(int, int),/*MCD*/
+int func_claves_publica_privada(int (*)(int, int),/*MCD*/
 	int (*)(int),/*rand_num*/
-	int (*)(int), /*prime*/
+	int (*)(int),/*prime*/
 	int (*)(int (*)(int), int (*) (int))/*rand_prime*/);
 
 //Función generadora del vector esquema
@@ -50,18 +49,18 @@ int main(){
 	int vector[40];//Variable para almacenar una linea de n?meros
 	int **numeros;//Vector de números
 	int opc;
-	int *p, *q, *n, *d, *e;
+	//Llaves
+	int e,n,d;
 	//Contadores
-	int i,j,parrafos;
+	int i,j,parrafos,h;
 	int verdadero=1;
 
 	FILE *archivo;
     FILE *salida;
 	char nombre[20];
-	
+
 	//Reservamos espacio para almacenar los 99 caracteres.
 	esquema= (char *)malloc(99*sizeof(char));
-
 
 	if (esquema==NULL){
 		puts("Error al reservar memoria para el esquema");
@@ -82,13 +81,9 @@ int main(){
 		switch (opc){
 			case 1:
 				//Generar las claves
-				//func_claves_publica_privada(p,q,d,e,n,mcd,prime,rand_num,rand_prime);
-				//printf("Numeros de la clave privada: p=%d, q=%d y d=%d\n", p,q,d);
-				//printf("Los numeros de la clave publica son: e=%d y n=%d", e,n);
-				printf("%s\n",esquema);
+				func_claves_publica_privada(mcd,prime,rand_num,rand_prime);
 				system("PAUSE");
-				printf(rand_num(verdadero));
-				system("PAUSE");
+				break;
 
 			case 2:
 				//Codificar mensaje
@@ -103,23 +98,24 @@ int main(){
 					return 1;
 				}
 				printf("Introduzca las llaves de codificacion 'e' y 'n'");
-				printf("\ne: ");scanf("%d",e);printf("\nn: ");scanf("%d",n);
+				printf("\ne: ");scanf("%d",&e);printf("\nn: ");scanf("%d",&n);
 
-				
+
 				parrafos=0;
 
 				//Reserva para el texto
 				texto= (char **)calloc(1,sizeof(char *));
 
+
 				while(verdadero){
-					
-					//Variable para almacenar cada linea
-					fgets(linea,80,archivo);
-					if(linea==NULL){
+
+					if(printf("%s",fgets(linea,80,archivo))==EOF){
 						//Reasignamos memoria cuando se acaba el contenido
 						texto= (char **)realloc(texto,(parrafos)*sizeof(char *));
 						break;
 					}else{
+					    printf("%d",strlen(linea));
+                        system("pause");
 						texto[parrafos++]=linea;
 						texto= (char **)realloc(texto,(parrafos+1)*sizeof(char *));
 					}
@@ -158,6 +154,7 @@ int main(){
 				printf("\nSe ha almacenado el contenido en el archivo %s\n", nombre);
 
 				fclose(salida);
+				break;
 
 			case 3:
 				//Decodificar mensaje
@@ -181,9 +178,9 @@ int main(){
 				for (i=0;i<parrafos;i++){
                     numeros[i]=(int *)malloc(40*sizeof(int));
                 }
-                
+
 				while(verdadero){
-                                                        
+
 					fgets(linea,40,archivo);
 					i=0;
 					while(linea[i]!='\0'){
@@ -216,6 +213,7 @@ int main(){
 				}
 
 				free(texto);
+				break;
 
 
 			case 4:
@@ -224,7 +222,7 @@ int main(){
 
 			default:
 				printf("\nOpcion invalida\n");
-		}	
+		}
 	}while(verdadero);
 	return 0;
 }

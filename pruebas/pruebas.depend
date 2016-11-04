@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1478276416 source:c:\users\josed\desktop\criptography-rsa\pruebas\main.c
+	<stdio.h>
+	<stdlib.h>
+

@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <time.h>
 
 int rand_num(int par){
 
@@ -8,6 +7,6 @@ int rand_num(int par){
 
 	int hora=time(NULL);
 	srand(hora);
-	int num=rand()%101+par;
+	int num=rand()%100+par;
 	return num;
 }
