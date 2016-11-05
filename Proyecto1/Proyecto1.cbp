@@ -40,6 +40,9 @@
 		<Unit filename="../func_numero2texto.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="../func_r_elev_s_mod_n.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="../func_texto2num.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -56,9 +59,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../rand_prime.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="../vec_r_elev_s_n.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>

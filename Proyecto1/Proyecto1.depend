@@ -3,9 +3,10 @@
 
 1478276231 source:c:\users\josed\desktop\criptography-rsa\func_esquema.c
 
-1478274517 source:c:\users\josed\desktop\criptography-rsa\func_numero2texto.c
+1478328040 source:c:\users\josed\desktop\criptography-rsa\func_numero2texto.c
 
-1478274517 source:c:\users\josed\desktop\criptography-rsa\func_texto2num.c
+1478328150 source:c:\users\josed\desktop\criptography-rsa\func_texto2num.c
+	<stdlib.h>
 
 1478274517 source:c:\users\josed\desktop\criptography-rsa\mcd.c
 
@@ -19,9 +20,12 @@
 	<stdlib.h>
 	<stdio.h>
 
-1478292793 source:c:\users\josed\desktop\criptography-rsa\main.c
+1478328153 source:c:\users\josed\desktop\criptography-rsa\main.c
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
 	<math.h>
+	<string.h>
+
+1478326710 source:c:\users\josed\desktop\criptography-rsa\func_r_elev_s_mod_n.c
 
