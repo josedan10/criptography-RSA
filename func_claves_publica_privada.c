@@ -1,31 +1,37 @@
-int func_claves_publica_privada(int *p,int *q,int *d,int *e,int *n,	
-	int (*mcd)(int, int),	
-	int (*prime)(int *),
-	int (*rand_num)(int *),	
-	int (*rand_prime)(int *, int (*rand_num)(int *), int (*prime)(int *)))
-{
-	/*Input de los números para armar la clave*/
+/*Esta función genera aleatoriamente las claves utilizando el método RSA*/
 
 
-	int k;//Declaramos k de la relación k=(p-1)(q-1) que debe ser coprimo con e
-	int i;
-	
-	//Generamos los números primos para la llave privada
-	*p=(*rand_prime)(p, rand_num, prime);
-	*q=(*rand_prime)(q, rand_num, prime);
-	
-	//Calculamos n
-	*n=(*p)*(*q);
 
-	//Calculamos k
-	k=((*p)-1)*((*q)-1);
+int func_claves_publica_privada(int (*mcd)(int,int), int (*primo)(int), 
+	int *(*alg_eucl_ext)(int,int)){
 
-	//Calculamos e=i tal que i<k cumpla con que k=1(mod i)
-	for (i=1; i<k; i++){
-        *e=(mcd(i,k)!=1)?continue:i,break;
-	}
-     //Aquí calculamos d
+	//Primos p y q
+	int p,q,k,e,d,n;
+	int hora=time(NULL);srand(hora);
+	int *vector;
 
-	*d=(k+1)/e;
+
+	do{
+		p=rand%(101-1)+2;//Generamos un número entre 100 y 2
+	}(while (*primo)(p));
+
+	do{
+		q=rand%(101-1)+2;//Generamos un número primo distinto a p
+	}(while (*primo)(q)==0 && q=p);
+
+	n=p*q;
+
+	k=(p-1)*(q-1);
+
+	do{
+		e=rand%(k-1)+2;//Generamos un e coprimo con k
+	}while(!mcd(e,k));
+
+	vector=alg_eucl_ext(k,e);
+	d=vector[2];//Hallamos el inverso multiplicativo de e mod k
+
+
+	printf("\nClave publica: n= %d, y e= %d. \n",n,e);
+	printf("Clave privada: p= %d, q= %d, y d=%d\n",p,q,d);
 
 }

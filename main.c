@@ -1,201 +1,168 @@
+/*ALGORITM
+
+a)Keys generation
+
+(1) Alicia genera, aleatoriamente y del mismo tamaño, dos números primos
+grandes y diferentes p y q, respectivamente.
+
+(2) n = pq.
+
+(3) k = (p − 1)(q − 1).
+
+(4) Seleccionar, aleatoriamente, un número entero e tal que mcd(e, k) = 1,
+con 1 < e < k.
+
+(5) Usar el algoritmo de Euclides extendido para hallar el número entero d
+tal que ed=1(mod k), donde 1 < d < Á.
+
+(6) La clave pública de Alicia es (n,e) y la clave privada es d.
+
+b)Encriptación
+
+(1) Bob recibe la clave pública de Alicia (n, e).
+
+(2) Representa el mensaje en texto plano m, como un número entero en el
+intervalo [0, n − 1].
+
+(3) Computar c = m^e(mod n).
+
+(4) Remitir el texto cifrado c a Alicia.
+
+c)Desencriptación
+
+(1) Para recuperar m, Alicia usa la transformación m = c^d(mod n).*/
+
+
+
+
+/*<<<<<<<<<<---------------- LIBRARIES ----------------->>>>>>>>>>>>>*/
+//>'stdli.h'
+//>'stdio.h'
+//>'math.h' to can use the functions 'floor' y 'sqrt'.
+//>'string.h' to can use the functions 'strcat', 'strcmp' and 'isspace'
+/*<<<<<<<<<<<<-------------------------------------------->>>>>>>>>>>>>*/
+
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 #include <math.h>
-//#include <time.h>
+#include <string.h>
+#include <time.h>
 
-/*--- DEFINICIÓN DE FUNCIONES ---*/
+/*<<<<<<<------------- FUNCTIONS ---------------->>>>>>>*/
 
-//Para calcular el mcd
-int mcd(int, int);
+//Euclides Algoritm Extendend
+int *alg_eucl_ext(int, int);
 
-//Para generar un número aleatorio
-int rand_num(int);
+//Máximo Común Divisor
+int mcd(int,int);
 
-//Para generar un número primo 
-int prime(int);
+//Función para verificar si un número es primo
+int primo(int);
 
-//Para generar un número primo aleatorio
-int rand_prime(int (*)(void), int (*)(void));
+//Función para generar las claves
+void func_claves_publica_privada(/*MCD*/int (*)(int,int),
+	/*primo*/int (*)(int), /*alg_eucl*/int *(*)(int,int));
 
-//Función para generar las claves públicas y privadas
-int func_claves_publica_privada(int *, int *, int *, int *, int *,
-	int (*)(int, int),/*MCD*/
-	int (*)(void),/*rand_num*/
-	int (*)(void), /*prime*/
-	int (*)(int (*)(void), int (*) (void))/*rand_prime*/);
-
-//Función generadora del vector esquema
+//Función para generar el esquema
 void func_esquema(char *);
 
-//Función r^s (mod n)
-int func_r_elev_s_mod_n(int, int, int);
-
-//Convierte el vector de números en texto
-int func_numero2texto(int **, char *, char **, int *, int *, int *,
-	int (*)(int *, int *, int *, int *))
-
-//Convierte el vector de caracteres en números
-int func_texto2num(char **, char *, int **, int *, int *,
-	int (*)(int *, int *, int *, int *))
-
-//Eleva cada número r del vector a la s mod n
-int vec_r_elev_s_n(int *, int *, int *);
+//Función para convertir de número a texto.
 
 
-int main(){
-	char *esquema;//Vector esquema
-	char **texto;//Vector con los párrafos
-	char linea;//Variable para almacenar cada linea
-	int *numeros;//Vector de números
-	int opc;
-	int *p, *q, *n, *d, *e;
 
-	FILE *archivo, *salida;
-	char nombre;
+
+
+
+
+main(){
 	
-	//Reservamos espacio para almacenar los 99 caracteres.
-	esquema= (char *)malloc(99*sizeof(char));
 
+	/*>>>>>>>>>>>>>>>MENÚ<<<<<<<<<<<<<<<<<*/
 
-	if (esquema==NULL){
-		puts("Error al reservar memoria para el esquema");
-		exit(1);
-	}else{
-		gen_esquema(esquema);
-	}
+	printf("Este programa genera claves, codifica y descodifica mensajes utilizando el metodo RSA.\n");
 
-	do {
-		/*--- MENÚ ---*/
-		printf("1) Generar claves publicas y privadas\n");
-		printf("2) Codificar mensaje\n");
-		printf("3) Decodificar mensaje\n");
-		printf("4) Salir\n");
+	
+
+	do{
+		printf("Elija la accion que desea realizar: \n\n");
+		printf("1. Generar claves.\n");
+		printf("2. Codificar un archivo o frase.\n");
+		printf("3. Descodificar un archivo o frase.\n");
+		printf("4. Salir.\n");
+
+		int opc;
 
 		scanf("%d",&opc);
 
 		switch (opc){
+
 			case 1:
-				//Generar las claves
-				func_claves_publica_privada(p,q,d,e,n);
-				printf("Numeros de la clave privada: p=%d, q=%d y d=%d\n", p,q,d);
-				printf("Los numeros de la clave publica son: e=%d y n=%d", e,n);
+				/*>>>>>>>>GENERAR LAS CLAVES<<<<<<<<*/
+
+				func_claves_publica_privada(mcd,primo,alg_eucl_ext);
+
 
 			case 2:
-				//Codificar mensaje
 
-				/*Esta función devuelve en un ARCHIVO de nombre 'texto_codificado.txt' el texto codificado*/
-				printf("Introduzca el nombre del archivo que desea codificar: ");
-				scanf("%s",nombre);
-				archivo=fopen(nombre,"r");
-
-				if(archivo==NULL){
-					printf("Error al abrir el archivo\n");
-					return 1;
-				}
-
-				int verdadero=1;
-				int parrafos=0;
-
-				//Reserva para el texto
-				texto= (char **)calloc(1,sizeof(char *));
-
-				while(verdadero){
+				/*>>>>>>>Codificar un mensaje o archivo<<<<<<<<<<*/
+				do{
+					printf("Desea codificar un mensaje corto o un archivo?")
+					printf("\n\n1. Mensaje corto (max 80 carac.)");
+					printf("\n2. Archivo '.txt'");
 					
-					//Variable para almacenar cada linea
-					linea=fgets(texto[parrafos],80,archivo);
-					if(linea==NULL){
-						//Reasignamos memoria cuando se acaba el contenido
-						texto= (char **)realloc(texto,(parrafos)*sizeof(char *));
-						break;
-					}else{
-						texto[parrafos++]=linea;
-						texto= (char **)realloc(texto,(parrafos+1)*sizeof(char *));
+
+					int opc2;
+
+					scanf("%d",&opc2);
+
+					switch(opc2){
+						case 1:
+							//Mensaje corto
+							break;
+
+						case 2: 
+							//Archivo
+							break;
+
+						case 3:
+							char r;
+							printf("Está seguro de que desea salir? (s/n)\n");
+							scanf("%c",&r);
+
+							if ((int)r==(int)"s"){
+								
+								exit(1);
+								break;
+							}else{
+								break;
+							}
 					}
-				}
-
-				//Reserva para los números
-				numeros= (int **)malloc(parrafos*sizeof(int *));
-
-
-				func_texto2numero(texto,esquema,numeros,e,n,parrafos,vec_r_elev_s_n);
-				fclose(archivo);
-
-
-				salida=fopen("texto_codificado.txt","w");
-				free(numeros);
-				free(texto);
-
-				//Escribimos en el archivo cada párrrafo del texto
-				for (i=0; i<parrafos; i++){
-					//Escribimos cada número del párrafo
-					for (j=0; j<strlen(numeros[i]); j++){
-						caracter=(i==strlen(numeros[i])-1)?"\n":" ";
-						fprintf(salida,"%d %c", numeros[i][j],caracter);
-					}
-				}
-				printf("\nSe ha almacenado el contenido en el archivo %s\n", nombre);
-
-				fclose(salida);
+				}while(opc2>=1 || opc2<=3);				
+		}
 
 			case 3:
-				//Decodificar mensaje
 
-				/*Esta función devuelve por PANTALLA el contenido del archivo descodificado*/
+				/*>>>>>>>>>>>>>>> Decodificar un mensaje o archivo <<<<<<<<<<<<<*/
+				printf("Desea descodificar un mensaje corto o un archivo?\n\n");
+				printf("1. Descodificar un mensaje corto(max 40 num).\n");
+				printf("2. Descodificar un archivo.\n");
 
-				printf("Introduzca el nombre del archivo que desea descodificar: ");
-				scanf("%s",nombre);
+				char opc2;
 
-				archivo=fopen(nombre,"r");
+				scanf("%c",&opc2);
 
-				if (archivo==NULL){
-					printf("\nError al abrir el archivo.\n");
-					return 1;
+
+				switch (opc2){
+
+					case 1:
+					//Descodificar mensaje corto
+
+
+					case 2:
+					//Descodificar un archivo
 				}
 
-				int verdadero=1;
-				int parrafos=0;
-
-				//Reserva para los números
-				numeros= (int **)calloc(1,sizeof(int*));
-
-				while(verdadero){
-					linea=fgets(numeros[parrafos],40,archivo);
-
-					if(linea==NULL){
-						//Reasignamos memoria cuando se acabe el contenido
-						numeros= (char **)realloc(numeros,(parrafos)*sizeof(char *));
-						break;
-					}else{
-						numeros[parrafos++]=linea;
-						numeros= (char **)realloc(numeros,(parrafos+1)*sizeof(char *));
-					}
-				}
-				fclose(archivo);
-
-				//Reserva para el texto
-				texto= (char **)calloc(1,sizeof(char *));
-
-				func_numero2texto(numeros,esquema,texto,d,n,parrafos,vec_r_elev_s_n);
-
-				free(numeros);
-
-				//Imprimimos cada párrafo en pantalla
-				for (i=0; i<=parrafos; i++){
-					printf("%s\n",texto[i]);
-				}
-
-				free(texto);
+	}while(opc!=4);
 
 
-			case 4:
-				free(esquema);
-				return 0;
-
-			default:
-				printf("\nOpcion invalida\n");
-		}	
-	}(while 1);
-	return 0;
-	
 }
