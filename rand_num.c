@@ -7,6 +7,6 @@ int rand_num(int par){
 
 	int hora=time(NULL);
 	srand(hora);
-	int num=rand()%100+par;
+	int num=rand()%100+20;
 	return num;
 }

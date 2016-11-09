@@ -1,38 +1,37 @@
 El encriptamiento es una forma efectiva de
-disminuir los riesgos en el uso de tecnología.
-Implica la codificación de información que puede
-ser transmitida vía una red de cómputo o un disco
+disminuir los riesgos en el uso de tecnolog¡a.
+Implica la codificaci¢n de informaci¢n que puede
+ser transmitida v¡a una red de c¢mputo o un disco
 para que solo el emisor y el receptor la puedan
 leer.
-En teoría, cualquier tipo de información
-computarizada puede ser encriptada. En la práctica,
+En teor¡a, cualquier tipo de informaci¢n
+computarizada puede ser encriptada. En la pr ctica,
 se le utiliza con mayor frecuencia cuando la
-información se transmite por correo electrónico o
+informaci¢n se transmite por correo electr¢nico o
 internet.
-La información es encriptada por el emisor
+La informaci¢n es encriptada por el emisor
 utilizando un programa para "confundir o
-entremezclar" la información utilizando un código
-"asegurado". El receptor descifra la información
-utilizando un código análogo exclusivo. Cualquier
-persona que intercepte el mensaje verá
-simplemente información entremezclada que no
-tendrá ningún sentido sin el código o llave
+entremezclar" la informaci¢n utilizando un c¢digo
+"asegurado". El receptor descifra la informaci¢n
+utilizando un c¢digo an logo exclusivo. Cualquier
+persona que intercepte el mensaje ver
+simplemente informaci¢n entremezclada que no
+tendr  ning£n sentido sin el c¢digo o llave
 necesaria.
 Existen distintos tipos de encriptamiento y distintos
 niveles de complejidad para hacerlo. Como con
-cualquier código, los de encriptamiento pueden ser
+cualquier c¢digo, los de encriptamiento pueden ser
 rotos si se cuenta con tiempo y recursos
 suficientes. Los altamente sofisticados niveles de
-encriptamiento con que se cuenta hoy en día hacen
-muy difícil descifrar la información encriptada.
-Una forma muy común de encriptamiento son los
-sistemas criptográficos de llave pública-llave
+encriptamiento con que se cuenta hoy en d¡a hacen
+muy dif¡cil descifrar la informaci¢n encriptada.
+Una forma muy com£n de encriptamiento son los
+sistemas criptogr ficos de llave p£blica-llave
 abierta. Este sistema utiliza dos llaves diferentes
 para cerrar y abrir los archivos y mensajes. Las dos
-llaves están matemáticamente ligadas. Una
-persona puede distribuir su lleve pública a otros
+llaves est n matem ticamente ligadas. Una
+persona puede distribuir su lleve p£blica a otros
 usuarios y utilizada para enviarle mensajes
 encriptados. La persona guarda en secreto la llave
 privada y la utiliza para decodificar los mensajes
-que le han enviado con la llave pública.
-
+que le han enviado con la llave p£blica.

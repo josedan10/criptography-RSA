@@ -10,6 +10,12 @@
 //Para calcular el mcd
 int mcd(int, int);
 
+//Algoritmo de Euclides
+int* alg_euc_ext(int,int);
+
+//Inverso modular
+int Inverso_Zn(int,int);
+
 //Para generar un número aleatorio
 int rand_num(int);
 
@@ -32,7 +38,7 @@ void func_esquema(char *);
 int func_r_elev_s_mod_n(int, int, int);
 
 //Convierte el vector de números en texto
-int func_numero2texto(int *, char *, char *, int, int,
+int func_numero2texto(int *, char *, char *, int, int, int,
 	int (*)(int, int, int));
 
 //Convierte el vector de caracteres en números
@@ -44,29 +50,18 @@ int main(){
 	char *esquema;//Vector esquema
 	char *texto;//Vector con los párrafos
 	char linea[80];//Variable para almacenar cada linea
-	int vector[40];//Variable para almacenar una linea de n?meros
 	int *numeros;//Vector de números
 	int opc;
-	char espacio=' ';
+	char espacio[3]={' ','\n'};
 	//Llaves
 	int e,n,d;
 	//Contadores
-	int i,j,parrafos,h,conv;
+	int i,j;
 	int verdadero=1;
 
 	FILE *archivo;
-    FILE *salida;
+    //FILE *salida;
 	char nombre[20];
-
-	//Reservamos espacio para almacenar los 99 caracteres.
-	esquema= (char *)calloc(99,sizeof(char));
-
-	if (esquema==NULL){
-		puts("Error al reservar memoria para el esquema");
-		exit(1);
-	}else{
-		func_esquema(esquema);
-	}
 
 	do {
 		/*--- MENÚ ---*/
@@ -81,67 +76,83 @@ int main(){
 			case 1:
 				//Generar las claves
 				func_claves_publica_privada(mcd,prime,rand_num,rand_prime);
-				system("PAUSE");
+				//system("PAUSE");
 				break;
 
 			case 2:
 				//Codificar mensaje
 
+				//Reservamos espacio para almacenar los 99 caracteres.
+				//esquema= (char *)calloc(99,sizeof(char));
+
+
+                esquema=(char*)calloc(100,sizeof(char));
+                if (esquema==NULL){
+                    printf("Error al reservar memoria para el esquema");
+                    exit(1);
+                }else{
+					func_esquema(esquema);
+				}
+				//printf("%s",esquema);
+
 				/*Esta función devuelve en un ARCHIVO de nombre 'texto_codificado.txt' el texto codificado*/
 				printf("Introduzca el nombre del archivo que desea codificar: ");
 				scanf("%s",nombre);
 
-				/*<<< ARCHIVOS >>>*/
+				/*<<< ARCHIVO >>>*/
 				archivo=fopen(nombre,"r");//Archivo de lectura
-				salida=fopen("texto_codificado.txt","w");//Archivo de salida
-
-				if(archivo==NULL||salida==NULL){
+				if(archivo==NULL){
 					printf("Error al abrir el archivo\n");
 					return 1;
 				}
 
+				/*<<< LLAVES DE CODIFICACIÓN >>>*/
                 printf("Introduzca las llaves de codificacion 'e' y 'n'");
 				printf("\ne: ");scanf("%d",&e);printf("\nn: ");scanf("%d",&n);
 
-				parrafos=0;
-
 				while(!feof(archivo)){
-
 					fgets(linea,80,archivo);
+
                     int largo=strlen(linea);
+                    //printf("%d\n", largo);
+                    //system("pause");
+
+                    //Si el texto tiene un número impar de caracteres, le agregamos un espacio al final
+                    if(largo%2!=0){
+						linea[largo-1]=espacio[0];
+						strcat(linea,&espacio[1]);
+					}
+
+					largo=strlen(linea);
+                    //printf("\nNuevo largo: %d",largo);
+                    //system("pause");
 
                     //Reserva para el texto
                     texto=(char *)calloc(largo,sizeof(char));
                     strcpy(texto,linea);
-
-                    //Si el texto tiene un número impar de caracteres, le agregamos un espacio al final
-                    if(largo%2!=0)
-						strcat(texto,&espacio);
-
-                    //printf("%s",texto);
-					char caracter;
-
+                    free(linea);
                     func_texto2num(texto,esquema,numeros,e,n,func_r_elev_s_mod_n);
-                    for (i=0;i<largo/2;i++){
-                    	if (i==largo-1){
-                    		caracter='\n';
-                    	}else{
-                    		caracter=' ';
-                    	}
-                    	fprintf(salida, "%d %c",numeros[i],caracter);
-                    }
+                    free(texto);
+
 				}
-
+				free(esquema);
 				fclose(archivo);
-				fclose(salida);
 
-				free(numeros);
-				free(texto);
 				printf("\nSe ha almacenado el contenido en el archivo %s\n", nombre);
 				break;
 
 			case 3:
-				//Decodificar mensaje
+				//Descodificar mensaje
+
+				//Reservamos espacio para almacenar los 99 caracteres.
+				esquema= (char *)calloc(100,sizeof(char));
+
+				if (esquema==NULL){
+					puts("Error al reservar memoria para el esquema");
+					exit(1);
+				}else{
+					func_esquema(esquema);
+				}
 
 				/*Esta función devuelve por PANTALLA el contenido del archivo descodificado*/
 
@@ -155,50 +166,64 @@ int main(){
 					return 1;
 				}
 
-				parrafos=0;
+				/*<<< LLAVES DE DESCODIFICACIÓN >>>*/
+            	printf("Introduzca las llaves de descodificacion 'd' y 'n'");
+				printf("\nd: ");scanf("%d",&d);printf("\nn: ");scanf("%d",&n);
 
-				//Reserva para los números
-				numeros= (int **)malloc(parrafos*sizeof(int *));
-				for (i=0;i<parrafos;i++){
-                    numeros[i]=(int *)malloc(40*sizeof(int));
-                }
+				while(!feof(archivo)){
 
-				while(verdadero){
+					fgets(linea,160,archivo);
+                    int largo=strlen(linea);
+                    int nro_elem=1;
+                    //printf("%d\n", largo);
+                    //system("pause");
+                    char *ptr;
+					ptr=linea;
 
-					fgets(linea,40,archivo);
-					i=0;
-					while(linea[i]!='\0'){
-						sscanf(linea,"%d",vector[i++]);
-					}
-					if(linea==NULL){
-						//Reasignamos memoria cuando se acabe el contenido
-						numeros= (int **)realloc(numeros,(parrafos)*sizeof(int *));
-						break;
-					}else{
-						numeros[parrafos++]=vector;
-						numeros= (int **)realloc(numeros,(parrafos+1)*sizeof(int *));
-					}
+				    for (j=0;j<largo;j++){
+				        if (isspace(linea[j]))
+				            nro_elem++;
+				    }
+				    //printf("Cantidad de numeros en la linea: %d",nro_elem);
+				    //system("pause");
+
+				    //Reserva para los numeros
+				    numeros=(int *)calloc(nro_elem,sizeof(int));
+				    if(numeros==NULL){
+				    	printf("Falla en la reserva de memoria");
+				    	return 1;
+				    }
+
+				    int numerito;
+
+				    i=0;
+				    while(i<nro_elem){
+				        sscanf(ptr,"%d",&numerito);
+				        numeros[i]=numerito;
+				        if(i==nro_elem-1) break;
+				        while(!isspace(*ptr)) {
+                            ptr++;
+                        }
+				        ptr++;
+				        i++;
+				    }
+				    free(ptr);
+                    texto=(char *)calloc((2*nro_elem)+1,sizeof(char));
+                    if(texto==NULL){
+                        printf("Error en la reserva de memoria\n");
+                        exit(1);
+                    }
+
+                    func_numero2texto(numeros,esquema,texto,d,n,nro_elem,func_r_elev_s_mod_n);
+                    free(numeros);
+                    free(linea);
 				}
+				free(esquema);
 				fclose(archivo);
+				//fclose(salida);
 
-				//Reserva para el texto
-				texto= (char **)calloc(parrafos,sizeof(char *));
-				for (i=0; i<parrafos; i++){
-					texto[i]=(char *)calloc(80,sizeof(char));
-				}
-
-				func_numero2texto(numeros,esquema,texto,d,n,func_r_elev_s_mod_n);
-
-				free(numeros);
-
-				//Imprimimos cada párrafo en pantalla
-				for (i=0; i<=parrafos; i++){
-					printf("%s\n",texto[i]);
-				}
-
-				free(texto);
+				printf("\nSe ha almacenado el contenido en el archivo texto_descodificado.txt\n");
 				break;
-
 
 			case 4:
 				free(esquema);

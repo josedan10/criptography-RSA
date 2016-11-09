@@ -1,36 +1,20 @@
+#include <math.h>
 int mcd(int y, int x){
 
 	//Esta función retorna el mcd de dos números
 
-	int temp, i;
+   int max,min,r;
 
-	if (x<y){
-		temp=x;
-		y=x;
-		x=temp;
-	}
-	//Si y divide a x, entonces mcd(x,y)=y
-	int mod=x%y;
+  // identificamos el mayor y menor de los numeros
+  if(x>=y){
+    max=x;min=y;}
+  else{
+    max=y;min=x;}
 
-	if (mod==0){
-		return y;
-	}else{
-		i=0;
-
-		while (y!=0){
-			y=x-y*(int)(x/y);
-
-			if (x==y && i==0){
-				//Si esto ocurre significa que son coprimos, mcd(x,y)=1
-				return 1;
-				break;
-			}else if(y==0){
-				return x;
-				break;
-			}else{
-				x=y;
-				i++;
-			}
-		}
-	}
+  while(min!=0){
+    r=max%min;
+    max=min;
+    min=r;
+  }
+  return max;
 }

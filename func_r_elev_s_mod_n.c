@@ -5,11 +5,13 @@ int func_r_elev_s_mod_n(int r, int s, int n){
 	int resultado=1;
 	int j;
 
-	for (j=1;j<=s;j++)
-		if(resultado<n){
-			resultado*=r;
-			continue;
-		}
-		resultado=(resultado*r)%n;
+	for (j=1;j<=s;j++){
+        resultado*=r;
+        //printf("%d\n",resultado);
+        if(resultado>n){
+            resultado=resultado%n;
+            //printf("resultado: %d\n",resultado);
+        }
+    }
 	return resultado;
 }

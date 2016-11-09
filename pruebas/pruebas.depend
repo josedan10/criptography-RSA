@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1478329755 source:c:\users\josed\desktop\criptography-rsa\pruebas\main.c
+1478398168 source:c:\users\josed\desktop\criptography-rsa\pruebas\main.c
 	<stdio.h>
 	<stdlib.h>
 	<math.h>
+	<string.h>
 
 1478276231 source:c:\users\josed\desktop\criptography-rsa\pruebas\func_esquema.c
 

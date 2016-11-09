@@ -1,5 +1,7 @@
+#include <stdlib.h>
+#include <stdio.h>
 void func_esquema(char *esquema){
-		
+
 	int i, j;
 
 	//Agregamos las letras minúsculas
