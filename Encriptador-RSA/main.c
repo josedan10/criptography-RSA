@@ -61,27 +61,31 @@ int primo(int);
 
 //Función para generar las claves
 void func_claves_publica_privada(/*MCD*/int (*)(int,int),
-	/*primo*/int (*)(int), /*alg_eucl*/int *(*)(int,int));
+	/*primo*/int (*)(int));
 
 //Función para generar el esquema
 void func_esquema(char *);
 
 //Función para convertir de número a texto.
+int func_texto2numero(/*r^s_mod_n*/int (*)(int,int,int),
+	/*Esquema*/ void (*)(char *));
 
 
 
 
 
 
+int main(){
 
-main(){
-	
+	int opc=0, opc2=0;
+	char r[2], *msg[81], *esquema, *msgcod[41];
+
 
 	/*>>>>>>>>>>>>>>>MENÚ<<<<<<<<<<<<<<<<<*/
 
 	printf("Este programa genera claves, codifica y descodifica mensajes utilizando el metodo RSA.\n");
 
-	
+
 
 	do{
 		printf("Elija la accion que desea realizar: \n\n");
@@ -90,7 +94,6 @@ main(){
 		printf("3. Descodificar un archivo o frase.\n");
 		printf("4. Salir.\n");
 
-		int opc;
 
 		scanf("%d",&opc);
 
@@ -99,47 +102,51 @@ main(){
 			case 1:
 				/*>>>>>>>>GENERAR LAS CLAVES<<<<<<<<*/
 
-				func_claves_publica_privada(mcd,primo,alg_eucl_ext);
+				func_claves_publica_privada(mcd,primo);
+				func_esquema(esquema);
+				break;
 
 
 			case 2:
 
 				/*>>>>>>>Codificar un mensaje o archivo<<<<<<<<<<*/
 				do{
-					printf("Desea codificar un mensaje corto o un archivo?")
+					printf("Desea codificar un mensaje corto o un archivo?");
 					printf("\n\n1. Mensaje corto (max 80 carac.)");
 					printf("\n2. Archivo '.txt'");
-					
+					printf("\n3. Salir.\n");
 
-					int opc2;
 
 					scanf("%d",&opc2);
 
 					switch(opc2){
 						case 1:
 							//Mensaje corto
+							printf("\nIntroduzca el mensaje que desea codificar:\n");
+							scanf("%s",msg);
+
+							func_(msg)
+
+
 							break;
 
-						case 2: 
+						case 2:
 							//Archivo
 							break;
 
 						case 3:
-							char r;
 							printf("Está seguro de que desea salir? (s/n)\n");
-							scanf("%c",&r);
+							scanf("%c",&r[0]);
 
-							if ((int)r==(int)"s"){
-								
+							if ((int)r[0]==(int)"s"){
+
 								exit(1);
 								break;
 							}else{
 								break;
 							}
 					}
-				}while(opc2>=1 || opc2<=3);				
-		}
-
+				}while(opc2>=1 || opc2<=3);
 			case 3:
 
 				/*>>>>>>>>>>>>>>> Decodificar un mensaje o archivo <<<<<<<<<<<<<*/
@@ -147,22 +154,31 @@ main(){
 				printf("1. Descodificar un mensaje corto(max 40 num).\n");
 				printf("2. Descodificar un archivo.\n");
 
-				char opc2;
-
-				scanf("%c",&opc2);
+				scanf("%d",&opc2);
 
 
 				switch (opc2){
 
 					case 1:
 					//Descodificar mensaje corto
+						printf("Introduzca el mensaje que desea descodificar (max 40 num): \n");
+						gets(msg);
+
+
+					break;
 
 
 					case 2:
 					//Descodificar un archivo
+						printf("")
+					break;
 				}
 
-	}while(opc!=4);
+			case 4:
+				return 0;
+		}
 
+	}while(opc!=4);
+	return 0;
 
 }

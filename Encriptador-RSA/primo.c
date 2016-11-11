@@ -1,6 +1,6 @@
 //Esta función utiliza el teorema de Eratóstenes para verificar si un número es primo
 
-/*<<<<<-----------TEOREMA DE ERATÖSTENES ----------->>>>>*/
+/*<<<<<-----------TEOREMA DE ERATÓSTENES ----------->>>>>*/
 
 /* Un número p no es primo <=> existe algún n<=sqrt(p)| p%n=0 , n>=2*/
 
@@ -8,9 +8,9 @@
 
 
 int primo(int p){
-	int n; 
+	int n;
 
-	for (n=2; n<=sqrt(p); n++){
+	for (n=2; n<=floor(sqrt(p)); n++){
 		if(p%n==0){
 		//Si el número no es primo devuelve 0
 			return 0;
