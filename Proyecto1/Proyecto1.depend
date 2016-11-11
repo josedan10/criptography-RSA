@@ -1,0 +1,39 @@
+# depslib dependency file v1.0
+1478418136 source:c:\users\josed\desktop\criptography-rsa\func_claves_publica_privada.c
+
+1478406590 source:c:\users\josed\desktop\criptography-rsa\func_esquema.c
+	<stdlib.h>
+	<stdio.h>
+
+1478419938 source:c:\users\josed\desktop\criptography-rsa\func_numero2texto.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+
+1478405419 source:c:\users\josed\desktop\criptography-rsa\func_texto2num.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+
+1478417369 source:c:\users\josed\desktop\criptography-rsa\mcd.c
+	<math.h>
+
+1478280774 source:c:\users\josed\desktop\criptography-rsa\prime.c
+
+1478291012 source:c:\users\josed\desktop\criptography-rsa\rand_prime.c
+
+1478274517 source:c:\users\josed\desktop\criptography-rsa\vec_r_elev_s_n.c
+
+1478420356 source:c:\users\josed\desktop\criptography-rsa\rand_num.c
+	<stdlib.h>
+	<stdio.h>
+
+1478653651 source:c:\users\josed\desktop\criptography-rsa\main.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<math.h>
+	<string.h>
+
+1478378204 source:c:\users\josed\desktop\criptography-rsa\func_r_elev_s_mod_n.c
+
