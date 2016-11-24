@@ -1,0 +1,37 @@
+El encriptamiento es una forma efectiva de
+disminuir los riesgos en el uso de tecnología.
+Implica la codificación de información que puede
+ser transmitida vía una red de cómputo o un disco
+para que solo el emisor y el receptor la puedan
+leer.
+En teoría, cualquier tipo de información
+computarizada puede ser encriptada. En la práctica,
+se le utiliza con mayor frecuencia cuando la
+información se transmite por correo electrónico o
+internet.
+La información es encriptada por el emisor
+utilizando un programa para "confundir o
+entremezclar" la información utilizando un código
+"asegurado". El receptor descifra la información
+utilizando un código análogo exclusivo. Cualquier
+persona que intercepte el mensaje verá
+simplemente información entremezclada que no
+tendrá ningún sentido sin el código o llave
+necesaria.
+Existen distintos tipos de encriptamiento y distintos
+niveles de complejidad para hacerlo. Como con
+cualquier código, los de encriptamiento pueden ser
+rotos si se cuenta con tiempo y recursos
+suficientes. Los altamente sofisticados niveles de
+encriptamiento con que se cuenta hoy en día hacen
+muy difícil descifrar la información encriptada.
+Una forma muy común de encriptamiento son los
+sistemas criptográficos de llave pública-llave
+abierta. Este sistema utiliza dos llaves diferentes
+para cerrar y abrir los archivos y mensajes. Las dos
+llaves están matemáticamente ligadas. Una
+persona puede distribuir su lleve pública a otros
+usuarios y utilizada para enviarle mensajes
+encriptados. La persona guarda en secreto la llave
+privada y la utiliza para decodificar los mensajes
+que le han enviado con la llave pública.

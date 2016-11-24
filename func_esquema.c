@@ -22,25 +22,29 @@ void func_esquema(char *esquema){
 
 	//Agregamos el espacio, !, ¡, ?, ¿
 
-	esquema[j++]=' ';esquema[j++]='!';esquema[j++]=(char)173;
-	esquema[j++]='?';esquema[j++]=(char)168;
+	esquema[j++]=' ';esquema[j++]='!';esquema[j++]=(char)161;
+	esquema[j++]='?';esquema[j++]=(char)191;
 
 	//Agregamos á, í, ó, ú
-	for (i=160;i<=163;i++,j++){
-		esquema[j]=(char)i;
+	for (int voc = 12, i = 225; voc != -15; voc = voc + 1) {
+		if (voc == 13) { voc = 6; }
+		esquema[j++] = (char)i;
+		if (voc == 8) { voc = -17; }
+		i = i + voc;
 	}
+	
 
 	/*Agregamos é, ñ, Ñ, ':', ';', '.', ',', '_', '-', '{', '}',
 	'(',')', '%', '&', '@', '*', '+', '/', '\','|', '$', ''', ''', '#',
 	'[', ']', '~'*/
-	esquema[j++]=(char)130;esquema[j++]=(char)164;esquema[j++]=(char)165;
-	esquema[j++]=':';esquema[j++]=';';esquema[j++]='.';
-	esquema[j++]=',';esquema[j++]='_';esquema[j++]='-';
-	esquema[j++]='{';esquema[j++]='}';esquema[j++]='(';
-	esquema[j++]=')';esquema[j++]=(char)37;//Este es el valor de '%', de la otra manera de error de sintaxis
-	esquema[j++]='&';esquema[j++]='@';esquema[j++]='*';
-	esquema[j++]='+';esquema[j++]='/';esquema[j++]='\\';//Revisar '\'
-	esquema[j++]='|';esquema[j++]='$';esquema[j++]='"';
-	esquema[j++]='\'';esquema[j++]='#';esquema[j++]='[';
-	esquema[j++]=']';esquema[j]='~';
+	esquema[j++]=(char)233;esquema[j++]=(char)241;esquema[j++]=(char)209;
+	esquema[j++]=(char)58;esquema[j++]=(char)59;esquema[j++]=(char)46;
+	esquema[j++]=(char)44;esquema[j++]=(char)95;esquema[j++]=(char)45;
+	esquema[j++]=(char)123;esquema[j++]=(char)125;esquema[j++]=(char)40;
+	esquema[j++]=(char)41;esquema[j++]=(char)37;//Este es el valor de '%', de la otra manera de error de sintaxis
+	esquema[j++]=(char)38;esquema[j++]=(char)64;esquema[j++]=(char)42;
+	esquema[j++]=(char)43;esquema[j++]=(char)47;esquema[j++]=(char)92;//Revisar '\'
+	esquema[j++]=(char)124;esquema[j++]=(char)36;esquema[j++]=(char)34;
+	esquema[j++]=(char)39;esquema[j++]=(char)35;esquema[j++]=(char)91;
+	esquema[j++]=(char)93;esquema[j]=(char)126;
 }

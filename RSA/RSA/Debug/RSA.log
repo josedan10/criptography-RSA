@@ -1,0 +1,51 @@
+﻿Compilación iniciada a las 23/11/2016 5:01:15 p. m..
+     1>Proyecto "C:\Users\josed\Desktop\RSA\RSA\RSA.vcxproj" en el nodo 2 (Build destinos).
+     1>ClCompile:
+         C:\Program Files\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:prompt "..\..\criptography-RSA\main.c"
+         main.c
+     1>c:\users\josed\desktop\criptography-rsa\main.c(199): warning C4013: 'isspace' sin definir; se supone que extern devuelve como resultado int
+     1>c:\users\josed\desktop\criptography-rsa\main.c(77): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         c:\program files\windows kits\10\include\10.0.10150.0\ucrt\stdio.h(1270): note: vea la declaración de 'scanf'
+     1>c:\users\josed\desktop\criptography-rsa\main.c(104): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         c:\program files\windows kits\10\include\10.0.10150.0\ucrt\stdio.h(1270): note: vea la declaración de 'scanf'
+     1>c:\users\josed\desktop\criptography-rsa\main.c(107): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         c:\program files\windows kits\10\include\10.0.10150.0\ucrt\stdio.h(205): note: vea la declaración de 'fopen'
+     1>c:\users\josed\desktop\criptography-rsa\main.c(115): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         c:\program files\windows kits\10\include\10.0.10150.0\ucrt\stdio.h(1270): note: vea la declaración de 'scanf'
+     1>c:\users\josed\desktop\criptography-rsa\main.c(118): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         c:\program files\windows kits\10\include\10.0.10150.0\ucrt\stdio.h(1270): note: vea la declaración de 'scanf'
+     1>c:\users\josed\desktop\criptography-rsa\main.c(123): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         c:\program files\windows kits\10\include\10.0.10150.0\ucrt\string.h(90): note: vea la declaración de 'strcat'
+     1>c:\users\josed\desktop\criptography-rsa\main.c(133): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         c:\program files\windows kits\10\include\10.0.10150.0\ucrt\string.h(90): note: vea la declaración de 'strcat'
+     1>c:\users\josed\desktop\criptography-rsa\main.c(143): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         c:\program files\windows kits\10\include\10.0.10150.0\ucrt\string.h(119): note: vea la declaración de 'strcpy'
+     1>c:\users\josed\desktop\criptography-rsa\main.c(171): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         c:\program files\windows kits\10\include\10.0.10150.0\ucrt\stdio.h(1270): note: vea la declaración de 'scanf'
+     1>c:\users\josed\desktop\criptography-rsa\main.c(173): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         c:\program files\windows kits\10\include\10.0.10150.0\ucrt\stdio.h(205): note: vea la declaración de 'fopen'
+     1>c:\users\josed\desktop\criptography-rsa\main.c(182): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         c:\program files\windows kits\10\include\10.0.10150.0\ucrt\stdio.h(1270): note: vea la declaración de 'scanf'
+     1>c:\users\josed\desktop\criptography-rsa\main.c(185): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         c:\program files\windows kits\10\include\10.0.10150.0\ucrt\stdio.h(1270): note: vea la declaración de 'scanf'
+     1>c:\users\josed\desktop\criptography-rsa\main.c(55): warning C4101: 'numeros': variable local sin referencia
+     1>c:\users\josed\desktop\criptography-rsa\main.c(61): warning C4101: 'i': variable local sin referencia
+       Link:
+         C:\Program Files\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\josed\Desktop\RSA\Debug\RSA.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\josed\Desktop\RSA\Debug\RSA.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\josed\Desktop\RSA\Debug\RSA.lib" /MACHINE:X86 Debug\alg_eucl.obj
+         Debug\func_claves_publica_privada.obj
+         Debug\func_esquema.obj
+         Debug\func_numero2texto.obj
+         Debug\func_r_elev_s_mod_n.obj
+         Debug\func_texto2num.obj
+         Debug\InversoZn.obj
+         Debug\main.obj
+         Debug\mcd.obj
+         Debug\prime.obj
+         Debug\rand_num.obj
+         Debug\rand_prime.obj
+         RSA.vcxproj -> C:\Users\josed\Desktop\RSA\Debug\RSA.exe
+     1>Compilación del proyecto terminada "C:\Users\josed\Desktop\RSA\RSA\RSA.vcxproj" (Build destinos).
+
+Compilación correcta.
+
+Tiempo transcurrido 00:00:01.61

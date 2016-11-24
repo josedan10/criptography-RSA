@@ -2,16 +2,23 @@
 #include <stdio.h>
 #include <string.h>
 
-int func_texto2num(char *texto, char *esquema, int *numeros, int s, int n,
-	int (*func_r_elev_s_mod_n)(int, int, int)){
+int func_texto2num(char *texto, char *esquema, int s, int n,
+	int (*func_r_elev_s_mod_n)(int, int, int), char *fsalida){
 	int nums[2],largo=strlen(texto), num;
+	int *numeros;
 	int i,j,z=0, k,val;
-    char espacio[3]={' ','\n'};
+	char espacio[3] = { ' ','\n' };// fsalida[100];
     FILE *salida;
+	
 
-    salida=fopen("texto_codificado.txt","a");//Archivo de salida
+    salida=fopen(fsalida,"a");//Archivo de salida
 
     /*Esta función codifica el texto y lo devuelve en números*/
+	if (strcmp(texto,"\n") == 0) {
+		fprintf(salida,"\n");
+		fclose(salida);
+		return 0;
+	}
 
 
     //El índice de cada caracter corresponde a su código en el esquema
@@ -51,7 +58,7 @@ int func_texto2num(char *texto, char *esquema, int *numeros, int s, int n,
         }
     }
     free(numeros);
-    free(nums);
+    //free(nums);
     fclose(salida);
     return 0;
 }

@@ -1,20 +1,33 @@
 #include <math.h>
-int mcd(int y, int x){
 
-	//Esta función retorna el mcd de dos números
+int mcd(int x, int y) {
+	if (x<y) {
+		int temp = x;
+		x = y;
+		y = temp;
 
-   int max,min,r;
+	}
 
-  // identificamos el mayor y menor de los numeros
-  if(x>=y){
-    max=x;min=y;}
-  else{
-    max=y;min=x;}
 
-  while(min!=0){
-    r=max%min;
-    max=min;
-    min=r;
-  }
-  return max;
+	if (x%y == 0) {
+		return y;
+	}
+	else {
+		int i = 0;
+		while (y != 0) {
+
+			y = x - y*((int)(x / y));
+
+			if (x == y && i == 0) {
+				return 1;
+				break;
+			}
+			else if (y == 0) {
+				return x;
+				break;
+			}
+			i++;
+			x = y;
+		}
+	}
 }

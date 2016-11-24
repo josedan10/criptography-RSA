@@ -11,10 +11,10 @@
 int mcd(int, int);
 
 //Algoritmo de Euclides
-int* alg_euc_ext(int,int);
+int alg_euc_ext(int,int);
 
 //Inverso modular
-int Inverso_Zn(int,int);
+int Inverso_Zn(int,int, int (*)(int,int));
 
 //Para generar un número aleatorio
 int rand_num(int);
@@ -29,7 +29,9 @@ int rand_prime(int (*)(int), int (*)(int));
 int func_claves_publica_privada(int (*)(int, int),/*MCD*/
 	int (*)(int),/*rand_num*/
 	int (*)(int),/*prime*/
-	int (*)(int (*)(int), int (*) (int))/*rand_prime*/);
+	int (*)(int (*)(int), int (*) (int)),/*rand_prime*/
+	int (*)(int, int)/*alg_euc_ext*/,
+	int (*)(int, int, int (*)(int, int))/*Inverso_Zn*/);
 
 //Función generadora del vector esquema
 void func_esquema(char *);
@@ -38,12 +40,12 @@ void func_esquema(char *);
 int func_r_elev_s_mod_n(int, int, int);
 
 //Convierte el vector de números en texto
-int func_numero2texto(int *, char *, char *, int, int, int,
-	int (*)(int, int, int));
+int func_numero2texto(/*int *,*/ char *, char *, int, int, int, char*,
+	int (*)(int, int, int), char *);
 
 //Convierte el vector de caracteres en números
-int func_texto2num(char *, char *, int *, int, int,
-	int (*)(int, int, int));
+int func_texto2num(char *, char *, int, int,
+	int (*)(int, int, int), char *);
 
 
 int main(){
@@ -62,9 +64,11 @@ int main(){
 	FILE *archivo;
     //FILE *salida;
 	char nombre[20];
+	char fsalida[100];//Archivo de salida
 
 	do {
 		/*--- MENÚ ---*/
+		//printf("%c\n\n", 250);
 		printf("1) Generar claves publicas y privadas\n");
 		printf("2) Codificar mensaje\n");
 		printf("3) Decodificar mensaje\n");
@@ -75,7 +79,7 @@ int main(){
 		switch (opc){
 			case 1:
 				//Generar las claves
-				func_claves_publica_privada(mcd,prime,rand_num,rand_prime);
+				func_claves_publica_privada(mcd,prime,rand_num,rand_prime,alg_euc_ext,Inverso_Zn);
 				//system("PAUSE");
 				break;
 
@@ -110,18 +114,25 @@ int main(){
                 printf("Introduzca las llaves de codificacion 'e' y 'n'");
 				printf("\ne: ");scanf("%d",&e);printf("\nn: ");scanf("%d",&n);
 
-				while(!feof(archivo)){
-					fgets(linea,80,archivo);
+				printf("\nIntroduzca el nombre del archivo de salida: ");
+				scanf("%*c%[^\n]", fsalida);
 
-                    int largo=strlen(linea);
+				while(fgets(linea, 80, archivo)!=NULL){
+
+					if (strcmp(&linea[strlen(linea) - 1], &espacio[1]) != 0) {
+						strcat(linea, &espacio[1]);
+					}
+
+                    int largo=strlen(linea)-1;
                     //printf("%d\n", largo);
                     //system("pause");
 
                     //Si el texto tiene un número impar de caracteres, le agregamos un espacio al final
                     if(largo%2!=0){
-						linea[largo-1]=espacio[0];
+						linea[largo]=espacio[0];
 						strcat(linea,&espacio[1]);
 					}
+					
 
 					largo=strlen(linea);
                     //printf("\nNuevo largo: %d",largo);
@@ -130,15 +141,15 @@ int main(){
                     //Reserva para el texto
                     texto=(char *)calloc(largo,sizeof(char));
                     strcpy(texto,linea);
-                    free(linea);
-                    func_texto2num(texto,esquema,numeros,e,n,func_r_elev_s_mod_n);
+                    //free(linea);
+                    func_texto2num(texto,esquema,e,n,func_r_elev_s_mod_n,fsalida);
                     free(texto);
 
 				}
 				free(esquema);
 				fclose(archivo);
 
-				printf("\nSe ha almacenado el contenido en el archivo %s\n", nombre);
+				printf("\nSe ha almacenado el contenido en el archivo texto_codificado.txt\n");
 				break;
 
 			case 3:
@@ -157,7 +168,7 @@ int main(){
 				/*Esta función devuelve por PANTALLA el contenido del archivo descodificado*/
 
 				printf("\nIntroduzca el nombre del archivo que desea descodificar: ");
-				scanf("%s",nombre);
+				scanf("%*c%[^\n]", nombre);
 
 				archivo=fopen(nombre,"r");
 
@@ -170,53 +181,33 @@ int main(){
             	printf("Introduzca las llaves de descodificacion 'd' y 'n'");
 				printf("\nd: ");scanf("%d",&d);printf("\nn: ");scanf("%d",&n);
 
-				while(!feof(archivo)){
+				printf("\nIntroduzca el nombre del archivo de salida: ");
+				scanf("%*c%[^\n]", fsalida);
 
-					fgets(linea,160,archivo);
-                    int largo=strlen(linea);
+				char linea_numeros[161];
+
+				while(fgets(linea_numeros, 160, archivo)!=NULL){
+
+                    int largo=strlen(linea_numeros);
                     int nro_elem=1;
                     //printf("%d\n", largo);
                     //system("pause");
                     char *ptr;
-					ptr=linea;
+					ptr=linea_numeros;
 
-				    for (j=0;j<largo;j++){
-				        if (isspace(linea[j]))
+				    for (j=0;j<largo-1;j++){
+				        if (isspace(linea_numeros[j]))
 				            nro_elem++;
 				    }
-				    //printf("Cantidad de numeros en la linea: %d",nro_elem);
+				    //printf("Cantidad de numeros en la linea_numeros: %d",nro_elem);
 				    //system("pause");
 
-				    //Reserva para los numeros
-				    numeros=(int *)calloc(nro_elem,sizeof(int));
-				    if(numeros==NULL){
-				    	printf("Falla en la reserva de memoria");
-				    	return 1;
-				    }
+				    
+				    //free(ptr);
 
-				    int numerito;
-
-				    i=0;
-				    while(i<nro_elem){
-				        sscanf(ptr,"%d",&numerito);
-				        numeros[i]=numerito;
-				        if(i==nro_elem-1) break;
-				        while(!isspace(*ptr)) {
-                            ptr++;
-                        }
-				        ptr++;
-				        i++;
-				    }
-				    free(ptr);
-                    texto=(char *)calloc((2*nro_elem)+1,sizeof(char));
-                    if(texto==NULL){
-                        printf("Error en la reserva de memoria\n");
-                        exit(1);
-                    }
-
-                    func_numero2texto(numeros,esquema,texto,d,n,nro_elem,func_r_elev_s_mod_n);
-                    free(numeros);
-                    free(linea);
+                    func_numero2texto(/*numeros,*/esquema,texto,d,n,nro_elem,linea_numeros,func_r_elev_s_mod_n, fsalida);
+                    //free(texto);
+					//linea_numeros = NULL;
 				}
 				free(esquema);
 				fclose(archivo);
@@ -226,11 +217,12 @@ int main(){
 				break;
 
 			case 4:
-				free(esquema);
 				return 0;
+				break;
 
 			default:
-				printf("\nOpcion invalida\n");
+				printf("\nOpcion invalida\n\n");
+				break;
 		}
 	}while(verdadero);
 	return 0;
